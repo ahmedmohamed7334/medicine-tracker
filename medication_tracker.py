@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, date, time
 import sqlite3
-from database import DatabaseManager
+import DatabaseManager
 from medication_config import MEDICATIONS
 import pytz
 
