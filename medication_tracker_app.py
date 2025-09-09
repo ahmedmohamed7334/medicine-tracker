@@ -139,7 +139,7 @@ class DatabaseManager:
         """Initialize with the medications from your list - reordered and grouped"""
         medications = [
             ("Controloc", "Once per morning", 1, "Before breakfast"),
-            ("Cervitam & Tebonina Forte", "Twice per day", 2, "Cervitam twice per day, Tebonina Forte once per day and once per night"),
+            ("Cervitam & Tebonina Forte & symbicort inhaler", "Twice per day", 2, "Cervitam twice per day, Tebonina Forte once per day and once per night"),
             ("Januvia & Milga Advance", "After lunch", 2, "Januvia after lunch, Milga Advance for diabetics"),
             ("Lipostat & Thesrovisit", "Once per night", 2, "Lipostat once per night, Thesrovisit same schedule"),
             ("Symbicort Inhaler", "Twice per day - once per day and once per night", 2, ""),
