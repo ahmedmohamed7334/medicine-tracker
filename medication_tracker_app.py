@@ -143,7 +143,7 @@ class DatabaseManager:
             ("Januvia & Milga Advance", "After lunch", 2, "Januvia after lunch, Milga Advance for diabetics"),
             ("Lipostat & Thesrovisit", "Once per night", 2, "Lipostat once per night, Thesrovisit same schedule"),
             ("Symbicort Inhaler", "Twice per day - once per day and once per night", 2, ""),
-            ("Fast Freeze Gel", "Same as before", 2, "Topical application"),
+            ("Fast Freeze Gel & dermovate cream", "Twice per day", 2, "Topical application"),
             ("Movxir", "Same as before", 2, ""),
             ("Potassium Drink", "Same as before", 1, ""),
             ("Dermovate Cream", "Once per day and once per night for 10 days", 2, "10-day course"),
