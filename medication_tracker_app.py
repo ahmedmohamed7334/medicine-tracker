@@ -136,18 +136,16 @@ class DatabaseManager:
         self.init_default_medications()
     
     def init_default_medications(self):
-        """Initialize with the medications from your list"""
+        """Initialize with the medications from your list - reordered and grouped"""
         medications = [
-            ("Cervitam", "Twice per day", 2, ""),
-            ("Tebonina Forte", "Once per day and once per night", 2, ""),
+            ("Controloc", "Once per morning", 1, "Before breakfast"),
+            ("Cervitam & Tebonina Forte", "Twice per day", 2, "Cervitam twice per day, Tebonina Forte once per day and once per night"),
+            ("Januvia & Milga Advance", "After lunch", 2, "Januvia after lunch, Milga Advance for diabetics"),
+            ("Lipostat & Thesrovisit", "Once per night", 2, "Lipostat once per night, Thesrovisit same schedule"),
             ("Symbicort Inhaler", "Twice per day - once per day and once per night", 2, ""),
             ("Fast Freeze Gel", "Same as before", 2, "Topical application"),
             ("Movxir", "Same as before", 2, ""),
             ("Potassium Drink", "Same as before", 1, ""),
-            ("Milga Advance", "For diabetics", 1, "Diabetes management"),
-            ("Januvia", "After lunch", 1, "Take with food"),
-            ("Lipostat", "Once per night", 1, "Before bedtime"),
-            ("Controloc", "Once per morning", 1, "Before breakfast"),
             ("Dermovate Cream", "Once per day and once per night for 10 days", 2, "10-day course"),
             ("Sandocal Vitamin D", "Once per morning", 1, "With breakfast"),
             ("Magnesium", "Once per morning", 1, "")
@@ -172,7 +170,7 @@ class DatabaseManager:
     def get_all_medications(self):
         """Get all medications"""
         conn = sqlite3.connect(self.db_name)
-        df = pd.read_sql_query("SELECT * FROM medications ORDER BY name", conn)
+        df = pd.read_sql_query("SELECT * FROM medications ORDER BY id", conn)
         conn.close()
         return df
     
@@ -239,7 +237,7 @@ class DatabaseManager:
                 WHERE date = ?
                 GROUP BY medication_id
             ) l ON m.id = l.medication_id
-            ORDER BY m.name
+            ORDER BY m.id
         '''
         
         df = pd.read_sql_query(query, conn, params=(date,))
