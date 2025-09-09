@@ -138,17 +138,16 @@ class DatabaseManager:
     def init_default_medications(self):
         """Initialize with the medications from your list - reordered and grouped"""
         medications = [
-            ("Controloc", "Once per morning", 1, "Before breakfast"),
-            ("Cervitam & Tebonina Forte & symbicort inhaler", "Twice per day", 2, "Cervitam twice per day, Tebonina Forte once per day and once per night"),
+            ("Controloc", "Once per morning and before eating by half an hour", 1, "Before breakfast"),
+            ("Cervitam & Tebonina Forte & Symbicort inhaler", "Twice per day", 2, "Cervitam twice per day, Tebonina Forte once per day and once per night"),
             ("Januvia & Milga Advance", "After lunch", 2, "Januvia after lunch, Milga Advance for diabetics"),
             ("Lipostat & Thesrovisit", "Once per night", 2, "Lipostat once per night, Thesrovisit same schedule"),
-            ("Symbicort Inhaler", "Twice per day - once per day and once per night", 2, ""),
-            ("Fast Freeze Gel & dermovate cream", "Twice per day", 2, "Topical application"),
-            ("Movxir", "Same as before", 2, ""),
-            ("Potassium Drink", "Same as before", 1, ""),
+            ("Fast Freeze Gel & Dermovate cream", "Twice per day", 2, "Topical application"),
+            ("Movxir", "Twice per day", 2, ""),
+            ("Potassium Drink", "Twice per day", 1, ""),
             ("Dermovate Cream", "Once per day and once per night for 10 days", 2, "10-day course"),
             ("Sandocal Vitamin D", "Once per morning", 1, "With breakfast"),
-            ("Magnesium", "Once per morning", 1, "")
+            ("Magnesium", "Once per morning and do not take it with other medications for half an hour", 1, "")
         ]
         
         conn = sqlite3.connect(self.db_name)
