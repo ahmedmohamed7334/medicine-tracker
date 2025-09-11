@@ -225,12 +225,12 @@ class DatabaseManager:
         query = '''
             SELECT m.name, m.times_per_day, m.schedule,
                    COALESCE(l.morning_status, 'pending') as morning_status,
-                   COALESCE(l.evening_status, 'pending') as evening_status
+                   COALESCE(l.night_status, 'pending') as night_status
             FROM medications m
             LEFT JOIN (
                 SELECT medication_id,
                        MAX(CASE WHEN time_slot = 'morning' THEN status END) as morning_status,
-                       MAX(CASE WHEN time_slot = 'evening' THEN status END) as evening_status
+                       MAX(CASE WHEN time_slot = 'night' THEN status END) as night_status
                 FROM medication_logs
                 WHERE date = ?
                 GROUP BY medication_id
@@ -288,11 +288,15 @@ def show_daily_tracker(db, date):
             </div>
             """, unsafe_allow_html=True)
             
-            # Create time slots based on times_per_day
+            # Create time slots based on times_per_day and medication type
             if med['times_per_day'] == 1:
-                time_slots = ['morning']
+                # Check if it's a night medication
+                if "night" in med['schedule'].lower() or med['name'] == "Lipostat & Thesrovisit":
+                    time_slots = ['night']
+                else:
+                    time_slots = ['morning']
             else:
-                time_slots = ['morning', 'evening']
+                time_slots = ['morning', 'night']
             
             # Create buttons for each time slot
             cols = st.columns(len(time_slots))
@@ -339,7 +343,14 @@ def show_history_view(db, date):
             st.markdown(f"**{row['name']}**")
             
             if row['times_per_day'] == 1:
-                status = row['morning_status']
+                # Check if it's a night medication
+                if "night" in row['schedule'].lower() or row['name'] == "Lipostat & Thesrovisit":
+                    status = row['night_status']
+                    st.write("**Night:**")
+                else:
+                    status = row['morning_status']
+                    st.write("**Morning:**")
+                
                 if status == "taken":
                     st.success("✓ Taken")
                 elif status == "missed":
@@ -358,10 +369,10 @@ def show_history_view(db, date):
                         st.warning("⏳ Pending")
                 
                 with col2:
-                    st.write("**Evening:**")
-                    if row['evening_status'] == "taken":
+                    st.write("**Night:**")
+                    if row['night_status'] == "taken":
                         st.success("✓ Taken")
-                    elif row['evening_status'] == "missed":
+                    elif row['night_status'] == "missed":
                         st.error("✗ Missed")
                     else:
                         st.warning("⏳ Pending")
