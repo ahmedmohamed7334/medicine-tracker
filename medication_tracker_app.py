@@ -140,12 +140,11 @@ class DatabaseManager:
         medications = [
             ("Controloc", "Once per morning and before eating by half an hour", 1, "Before breakfast"),
             ("Cervitam & Tebonina Forte & Symbicort inhaler", "Twice per day", 2, "Cervitam twice per day, Tebonina Forte once per day and once per night"),
-            ("Januvia & Milga Advance", "After lunch", 2, "Januvia after lunch, Milga Advance for diabetics"),
-            ("Lipostat & Thesrovisit", "Once per night", 2, "Lipostat once per night, Thesrovisit same schedule"),
+            ("Januvia & Milga Advance", "After lunch", 1, "Januvia after lunch, Milga Advance for diabetics"),
+            ("Lipostat & Thesrovisit", "Once per night", 1, "Lipostat once per night, Thesrovisit same schedule"),
             ("Fast Freeze Gel & Dermovate cream", "Twice per day", 2, "Topical application"),
             ("Movxir", "Twice per day", 2, ""),
-            ("Potassium Drink", "Twice per day", 1, ""),
-            ("Dermovate Cream", "Once per day and once per night for 10 days", 2, "10-day course"),
+            ("Potassium Drink", "Twice per day", 2, ""),
             ("Sandocal Vitamin D", "Once per morning", 1, "With breakfast"),
             ("Magnesium", "Once per morning and do not take it with other medications for half an hour", 1, "")
         ]
