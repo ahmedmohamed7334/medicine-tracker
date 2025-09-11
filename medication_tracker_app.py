@@ -146,7 +146,7 @@ class DatabaseManager:
             ("Movxir", "Twice per day", 2, ""),
             ("Potassium Drink", "Twice per day", 2, ""),
             ("Sandocal Vitamin D", "Once per morning", 1, "With breakfast"),
-            ("Magnesium", "Once per morning and do not take it with other medications for half an hour", 1, "")
+            ("Magnesium Tablets", "Once per morning and do not take it with other medications for half an hour", 1, "")
         ]
         
         conn = sqlite3.connect(self.db_name)
